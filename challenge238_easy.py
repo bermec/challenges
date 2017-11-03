@@ -24,9 +24,7 @@ cvcvcvcvcvcvcvcvcvcv
 Sample Outputs
 
 litunn
-
 ytie
-
 poxuyusovevivikutire
 
 Bonus
