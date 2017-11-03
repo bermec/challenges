@@ -1,0 +1,240 @@
+# Implementation of classic arcade game Pong
+# Use the 'W' and 'S' keys to control the left paddle, and 
+# the up and down arrows to control the right paddle. 
+import simplegui
+import random
+
+# initialize globals - pos (position) and vel (velocity) encode vertical info for paddles
+WIDTH = 600
+HEIGHT = 400       
+BALL_RADIUS = 20
+ball_pos = [WIDTH / 2, HEIGHT / 2]
+ball_vel = [-2,  3]
+
+PAD_WIDTH = 8
+PAD_HEIGHT = 80
+HALF_PAD_WIDTH = PAD_WIDTH / 2
+HALF_PAD_HEIGHT = PAD_HEIGHT / 2
+
+paddle1_pos = HEIGHT / 2
+paddle2_pos = HEIGHT / 2
+paddle1_vel = 0
+paddle2_vel = 0
+
+score1 = 0
+score1_pos = [WIDTH/4, 30]
+score2 = 0
+score2_pos = [WIDTH*3/4, 30]
+
+new_ball = False
+
+# helper function that spawns a ball by updating the 
+# ball's position vector and velocity vector
+# if right is True, the ball's velocity is upper right, else upper left
+def ball_init(right):
+    global ball_pos, ball_vel # these are vectors stored as lists
+    global HEIGHT, WIDTH, new_ball
+
+    new_ball = False
+
+    ball_pos = [WIDTH / 2, HEIGHT / 2]
+
+    if right :
+        ball_vel[0] = random.randrange(2, 4)
+
+    else :
+        ball_vel[0] = -random.randrange(2, 4)
+
+    ball_vel[1] = -random.randrange(2, 4)
+
+
+# define event handlers
+
+def new_game_timer():  #pause before spawning new ball
+    global score1, score2, ball_pos, new_ball
+
+    #reset scores
+    score1 = 0
+    score2 = 0
+
+    #remove ball
+    new_ball = True        #boolean used to flag a new ball will be spawned
+    ball_pos = [1000,1000] #draw ball off of canvas to make it "disappear"
+
+    timer.start()
+
+
+def new_game():
+    global paddle1_pos, paddle2_pos, paddle1_vel, paddle2_vel  # these are floats
+    global score1, score2  # these are ints
+    global HEIGHT, new_ball, RIGHT
+
+    #reset scores
+    score1 = 0
+    score2 = 0
+
+    #reset paddle positions 
+    paddle1_pos = HEIGHT / 2
+    paddle2_pos = HEIGHT / 2
+
+    #start a game of Pong
+    #time.sleep(0.5)  #wanted to delay ball spawning a little, but this feature is not supported
+    timer.stop()
+    new_ball = False
+    ball_init(True)
+
+
+def draw(canvas):
+    global score1, score2, paddle1_pos, paddle2_pos, ball_pos, ball_vel
+    global paddle1_vel, paddle2_vel
+
+    # draw mid line and gutters
+    canvas.draw_line([WIDTH / 2, 0],[WIDTH / 2, HEIGHT], 1, "White")
+    canvas.draw_line([PAD_WIDTH, 0],[PAD_WIDTH, HEIGHT], 1, "White")
+    canvas.draw_line([WIDTH - PAD_WIDTH, 0],[WIDTH - PAD_WIDTH, HEIGHT], 1, "White")
+
+    # show scores
+    canvas.draw_text(str(score1), score1_pos, 24, "Green")
+    canvas.draw_text(str(score2), score2_pos, 24, "Yellow")
+
+
+    # update paddle's vertical position, keep paddle on the screen
+    paddle1_pos += paddle1_vel
+    paddle2_pos += paddle2_vel
+
+
+    # draw paddles
+    # Left Paddle:
+    #Pad1_Upper_Y = HEIGHT/2 - PAD_HEIGHT/2   
+    if paddle1_pos - PAD_HEIGHT/2 > 0:
+        Pad1_Upper_Y = paddle1_pos - PAD_HEIGHT/2
+    else:
+        Pad1_Upper_Y = 0
+        paddle1_pos = PAD_HEIGHT/2
+
+    if paddle1_pos + PAD_HEIGHT/2 < HEIGHT:
+        Pad1_Lower_Y = paddle1_pos + PAD_HEIGHT/2
+    else:
+        Pad1_Lower_Y = HEIGHT
+        paddle1_pos = HEIGHT - PAD_HEIGHT/2
+    
+    #canvas.draw_polygon([[0, Pad1_Upper_Y], [PAD_WIDTH, Pad1_Upper_Y], [PAD_WIDTH, Pad1_Lower_Y], [0, Pad1_Lower_Y]], 1, "Green", "White")
+    canvas.draw_line([0, Pad1_Upper_Y],[0, Pad1_Lower_Y], PAD_WIDTH*2, "White")
+
+    # Right Paddle
+    if paddle2_pos - PAD_HEIGHT/2 > 0:
+        Pad2_Upper_Y = paddle2_pos - PAD_HEIGHT/2
+    else:
+        Pad2_Upper_Y = 0
+        paddle2_pos = PAD_HEIGHT/2
+
+    if paddle2_pos + PAD_HEIGHT/2 < HEIGHT:
+        Pad2_Lower_Y = paddle2_pos + PAD_HEIGHT/2
+    else:
+        Pad2_Lower_Y = HEIGHT
+        paddle2_pos = HEIGHT - PAD_HEIGHT/2
+    #canvas.draw_polygon([[WIDTH - PAD_WIDTH, Pad2_Upper_Y], [WIDTH, Pad2_Upper_Y], [WIDTH, Pad2_Lower_Y], [WIDTH - PAD_WIDTH, Pad2_Lower_Y]], 1, "Green", "White")
+    canvas.draw_line([WIDTH - PAD_WIDTH/2, Pad2_Upper_Y],[WIDTH - PAD_WIDTH/2, Pad2_Lower_Y], PAD_WIDTH, "White")
+
+    if not new_ball :
+        # update ball
+        ball_pos[0] += ball_vel[0]
+        ball_pos[1] += ball_vel[1]
+
+        #  LHS: collide and reflect off of left hand side of canvas (gutter)
+        if ball_pos[0] <= BALL_RADIUS + PAD_WIDTH:
+
+            #ball_vel[0] = - ball_vel[0]
+            #  When the ball touches a gutter, use ball_init(right) to respawn the ball 
+            #  in the center of the table headed towards the opposite gutter
+
+            # check if ball has hit right hand paddle (paddle2)
+            # if so, increase bally velocity by 10% and reflect
+            if ball_pos[1] >= Pad1_Upper_Y and ball_pos[1] <= Pad1_Lower_Y:
+                ball_vel[0] = - ball_vel[0] * 1.1
+            # if not, score 1 for Paddle1 and reset ball
+            else:
+                ball_init(True)
+                score2 += 1
+
+        #  RHS: Right Hand Side - bounce off of gutter
+        if ball_pos[0] >= (WIDTH - 1) - BALL_RADIUS - PAD_WIDTH:
+            #ball_vel[0] = - ball_vel[0]
+
+            # check if ball has hit right hand paddle (paddle2)
+            # if so, increase bally velocity by 10% and reflect
+            if ball_pos[1] >= Pad2_Upper_Y and ball_pos[1] <= Pad2_Lower_Y:
+                ball_vel[0] = - ball_vel[0] * 1.1
+            
+            # if not, score 1 for Paddle1 and reset ball
+            else:
+                ball_init(False)
+                score1 += 1
+
+        #  Top
+        if ball_pos[1] <= BALL_RADIUS:
+            ball_vel[1] = - ball_vel[1]
+        #  Bottom
+        if ball_pos[1] >= (HEIGHT - 1) - BALL_RADIUS:
+            ball_vel[1] = - ball_vel[1]
+
+    # draw ball and scores
+    canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "Red", "White")
+
+
+def keydown(key):
+    global paddle1_vel, paddle2_vel
+
+    vel = 4
+
+    #paddle1
+    if key == simplegui.KEY_MAP["s"]:
+        paddle1_vel += vel
+    elif key == simplegui.KEY_MAP["w"]:
+        paddle1_vel -= vel  
+
+    #paddle2
+    if key == simplegui.KEY_MAP["down"]:
+        paddle2_vel += vel
+    elif key == simplegui.KEY_MAP["up"]:
+        paddle2_vel -= vel  
+
+
+def keyup(key):
+    global paddle1_vel, paddle2_vel
+
+    #paddle1
+    if key == simplegui.KEY_MAP["s"]:
+        paddle1_vel = 0
+    elif key == simplegui.KEY_MAP["w"]:
+        paddle1_vel = 0
+
+    #paddle2
+    if key == simplegui.KEY_MAP["down"]:
+        paddle2_vel = 0
+    elif key == simplegui.KEY_MAP["up"]:
+        paddle2_vel = 0
+
+
+# create frame
+frame = simplegui.create_frame("Pong", WIDTH, HEIGHT)
+frame.set_draw_handler(draw)
+frame.set_keydown_handler(keydown)
+frame.set_keyup_handler(keyup)
+
+label = frame.add_label(" ")
+label = frame.add_label("Use the 'W' and 'S' keys to control the left paddle.")
+label = frame.add_label(" ")
+label = frame.add_label("Use the up and down arrows to control the right paddle.")
+label = frame.add_label(" ")
+
+frame.add_button("New Game", new_game_timer, 100)
+timer = simplegui.create_timer(750, new_game)
+
+# start frame and timer
+frame.start()
+timer.start()
+
+# launch new game
+new_game()
+

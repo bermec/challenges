@@ -1,0 +1,51 @@
+I hope nothing serious.
+
+Good & not so here,
+First off, there is nothing displayed at run. It's running but the player gets no prompt. Per the rubric, it is starting immediately, I just don't know it unless I enter a number. So a little 'heading' would have been more points.
+
+I never see what the 'secret' number is (required), which probably didn't matter because it took the same number twice that had  to have been the number or...? Note the first 60. I'm told to go higher, no problem. But notice at the bottom. It HAD told me 60 was to low, now it's too high?! It should have told me what the number was win/lose or draw.
+
+Your guess:  60
+Go higher, guesses left:  6
+
+Your guess:  80
+Go lower, guesses left  6
+
+Your guess:  70
+Go lower, guesses left  5
+
+Your guess:  65
+Go lower, guesses left  4
+
+Your guess:  63
+Go lower, guesses left  3
+
+Your guess:  62
+Go lower, guesses left  2
+
+Your guess:  61
+Go lower, guesses left  1
+
+Your guess:  60
+Go lower, guesses left  0
+
+:( Sorry, you lost! New game starting..
+
+That is nice output in general.
+
+Range functions are working but the player doesn't get any visual indication that anything is different until they enter a number. Another requirement.
+
+Count seems OK. As soon as I hit the above in the second game, I stopped.
+
+It runs without throwing errors. That is something. Please, take the time to look over some of the other examples in here. There is some good stuff! You really are close.
+1
+· flag
+Controls
+Roger Ward· 4 days ago 
+Thanks to yourself and Moria for the input. Strange report you highlighted there, I will hard-code 59,60 and 61 to see if I can replicate it.
+0
+· flag
+Brad Kell· 4 days ago 
+That example caught me by surprise. I had 'looked' at the code, and while it was a little different than mine, I didn't 'see' that coming. It 's probably in the comparison of guesses.
+0
+· flag

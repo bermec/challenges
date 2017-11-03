@@ -1,0 +1,27 @@
+http://www.codeskulptor.org/#examples-rpsls_template.py
+http://www.codeskulptor.org/#user20_lJliWRemFn_0.py
+http://www.codeskulptor.org/#user20_XnQxFBaaXe_21.py   ;submission rspls.py
+http://www.codeskulptor.org/#user21_35pxLCd733_3.py    :Calculator
+http://www.codeskulptor.org/#user21_35pxLCd733_9.py    :  ''   with input
+http://www.codeskulptor.org/#user21_IFcqvcZPY4_51.py    : guess_number
+http://www.codeskulptor.org/#examples-canvas_and_drawing.py        : simple drawing
+http://www.codeskulptor.org/#examples-money-1.py    : slicing etc
+http://www.codeskulptor.org/#user21_h9HHRd9LqP_14.py    :dollars/cents
+http://www.codeskulptor.org/#user22_H03y60PQdD_0.py    : timer
+http://www.codeskulptor.org/#user22_s2DaBuAGZC_40.py     :stopwatch
+http://www.codeskulptor.org/#user22_u95fDsGaYk_0.py         ; screensaver
+https://class.coursera.org/interactivepython-003/quiz/feedback?submission_id=873319      ;quiz
+http://www.codeskulptor.org/#user22_PVGC9q0vN8_0.py       :automobile
+https://class.coursera.org/interactivepython-003/quiz/attempt?quiz_id=40       : quiz 2b 011113
+http://www.codeskulptor.org/#user22_r6Y4Y7Csgu3Pq4v.py          ; bouncing ball
+http://www.codeskulptor.org/#examples-position_control.py            ; using keys
+http://www.codeskulptor.org/#user22_xXwrdloPBySxUoW_4.py        ;pong 
+http://www.codeskulptor.org/#user23_DqLUjdyB8D_1.py    : motion
+http://www.codeskulptor.org/#user23_uYFnHbUGi2_6.py       ;pong
+http://www.codeskulptor.org/#user23_zsKIat1RRb_19.py    ;also pong
+http://www.codeskulptor.org/#user23_5Wt0KLpn8HQyDkO.py      :pong submitted
+http://www.codeskulptor.org/#examples-memory_template.py           # memory
+https://class.coursera.org/interactivepython-003/quiz/feedback?submission_id=1172838         #quiz 5b
+http://www.codeskulptor.org/#user24_sXbv3tLSQV3zuWs_10.py                            #memory
+http://www.codeskulptor.org/#user24_MTRIdTkjct_3.py
+http://www.codeskulptor.org/#user25_ivLHkpSExwZC6TK.py                                             #mem nearly

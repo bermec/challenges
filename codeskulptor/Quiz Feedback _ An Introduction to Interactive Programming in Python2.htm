@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Quiz Feedback | An Introduction to Interactive Programming in Python</title>
+<link rel="stylesheet" href="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/spark.css">
+<link rel="stylesheet" href="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/course.css">
+<link rel="icon" href="https://spark-public.s3.amazonaws.com/interactivepython/static/images/favicon.ico">
+</head>
+
+<body><div class="course-signaturetrack-topbanner">  <span class="course-signaturetrack-topbanner-close">    <a href="#">×</a>  </span>  <span class="course-signaturetrack-topbanner-text">Earn a Verified Certificate for this course!  </span>  <span class="course-signaturetrack-topbanner-button">    <a target="_new" href="https://www.coursera.org/signature/course/interactivepython/971041?utm_source=spark&amp;utm_medium=banner">Get Started</a>  </span></div>
+    <a href="#course-page-content" class="hidden">Skip Navigation</a>
+    <div class="hidden">
+        This page features MathJax technology to render mathematical formulae.
+        If you are using a screen reader, please visit <a href="http://www.dessci.com/en/products/mathplayer/">MathPlayer</a> to download the plugin for your browser. Please note that this is an Internet Explorer-only plugin at this time.
+    </div>
+
+    <h1 class="hidden">An Introduction to Interactive Programming in Python</h1>
+
+    <script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/204.js" async="" type="text/javascript"></script><script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/ga.js" async="" type="text/javascript"></script><script>window.onerror = function(message, url, lineNum) {
+
+  // First check the URL and line number of the error
+  url = url || window.location.href;
+  // 99% of the time, errors without line numbers arent due to our code,
+  // they are due to third party plugins and browser extensions
+  if (lineNum === undefined || lineNum == null) return;
+  
+  // Now figure out the actual error message
+  // If it's an event, as triggered in several browsers
+  if (message.target && message.type) {
+    message = message.type;
+  }
+  if (!message.indexOf) {
+    message = 'Non-string, non-event error: ' + (typeof message);
+  }
+  
+  var errorDescrip = {
+    message: message,
+    script: url,
+    line: lineNum,
+    url: document.URL
+  }
+  
+  var err = {
+    key: 'page.error.javascript', 
+    value: errorDescrip
+  }
+  
+  window._204 = window._204 || [];
+  window._204.push(err);
+  
+  window._gaq = window._gaq || [];
+  window._gaq.push(err);
+}</script>
+
+<div class="course-topbar container-fluid" role="banner">
+
+    <div class="row-fluid">
+
+        <div class="span3">
+          <a href="https://www.coursera.org/" class="course-topbar-logo" data-if-linkable="add-referrer"></a>
+        </div>
+
+        <div class="course-topbar-nav-container span9" style="float:right;">
+            <h2 class="hidden">Top Navigation Bar</h2>
+
+            <ul class="course-topbar-nav-list">
+                <li class="course-topbar-nav-list-item">
+                  <a href="https://www.coursera.org/courses" data-if-linkable="add-referrer">Courses</a>
+                </li>
+
+                
+                <li class="course-topbar-nav-list-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-owns="course-topbar-my" data-popup="#course-topbar-my" data-popup-bind-open="mouseenter" data-popup-close="" style="cursor:pointer;" data-popup-direction="se">
+                                        <a data-user-id="1550273">
+                        Roger Ward                        <i class="icon-caret-down"></i>
+                    </a>
+                </li>
+
+                            </ul>
+        </div>
+    </div>
+
+    <div id="course-topbar-aboutus" class="course-topbar-sublist">
+        <a class="course-topbar-sublist-item" href="https://www.coursera.org/about/jobs" target="_new" data-if-linkable="add-referrer">Jobs</a>
+        <a class="course-topbar-sublist-item" href="https://www.coursera.org/about/team" target="_new" data-if-linkable="add-referrer">Team</a>
+        <a class="course-topbar-sublist-item" href="https://www.coursera.org/about/contact" target="_new" data-if-linkable="add-referrer">Contact Us</a>
+        <a class="course-topbar-sublist-item" href="https://www.coursera.org/about/" target="_new" data-if-linkable="add-referrer">About Us</a>
+    </div>
+
+    <div id="course-topbar-my" class="course-topbar-sublist">
+        <a class="course-topbar-sublist-item" href="https://www.coursera.org/" target="_new">My Courses</a>
+        <a class="course-topbar-sublist-item" href="https://www.coursera.org/account/profile" target="_new">Profile</a>
+        <a class="course-topbar-sublist-item" href="https://www.coursera.org/account/records" target="_new">Course Records</a>
+        <a class="course-topbar-sublist-item" href="https://www.coursera.org/account/settings" target="_new">Settings</a>
+                <a class="course-topbar-sublist-item" href="https://class.coursera.org/interactivepython-003/class/preferences">Course Preferences</a>
+        <a class="course-topbar-sublist-item" href="https://class.coursera.org/interactivepython-003/auth/logout">Sign Out</a>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="course-topbanner-wrapper">
+  <div class="course-topbanner">
+    <div class="course-topbanner-university-logo">
+      <a href="https://www.coursera.org/rice" class="coursera-university-color" target="_blank" data-if-linkable="add-referrer" title="https://www.coursera.org/rice">
+        <img src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/university_logo.png" alt="rice">
+      </a>
+    </div>
+
+                    <div class="course-signaturetrack" style="top: 0px">
+          <div class="course-signaturetrack-topbanner-side-join">
+            <div class="course-signaturetrack-bannerbox">
+                <div class="course-signaturetrack-bannerbox-join">
+                    <a target="_new" href="https://www.coursera.org/signature/course/interactivepython/971041?utm_source=spark&amp;utm_medium=bannerbox">Join Signature Track</a>
+                </div>
+                <div class="course-signaturetrack-bannerbox-daysleft">3 days and 4 hours left!</div>
+            </div>
+          </div>
+        </div>
+    
+    <h1 class="course-topbanner-header">
+      <a class="course-topbanner-name coursera-university-color" href="https://class.coursera.org/interactivepython-003/class/index" data-if-linkable="modal-lock">
+        An Introduction to Interactive Programming in Python      </a>
+      <br>
+      <span class="course-topbanner-instructor" style="">
+        by  Joe  Warren,  John  Greiner,  Stephen  Wong,  Scott  Rixner      </span>
+    </h1>
+
+  </div>
+</div>
+
+        <div class="container-fluid" style="position:relative;">
+        <div class="row-fluid">
+            <div id="course-page-sidebar" role="navigation">
+                <div class="course-navbar-container">
+	<a href="https://class.coursera.org/interactivepython-003/class/index">
+	<img src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/logo.png" style="width: 205px;height: 116px;margin: -15px 0px 8px 1px; box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);" alt="Course Home Page">
+	</a>
+
+	<div data-coursera-course-search-nav-widget="" class="input-append course-search-nav-box">
+		<form class="form-inline minimized-search" method="get" action="https://class.coursera.org/interactivepython-003/class/search" data-js-search-form="">
+			<label for="course-search-nav-input" class="accessible-text-for-reader">Search this course</label>
+			<input id="course-search-nav-input" name="q" data-js-search-input="" type="text">&nbsp;
+			<button class="btn icon-search" type="submit">
+				<span class="accessible-text-for-reader">Search</span>
+			</button>
+		</form>
+	</div>
+
+<h2 class="hidden">Side Navigation Bar</h2>
+<ul class="course-navbar-list">
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/class/index" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Home							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/quiz/index?quiz_type=survey" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Surveys and Studies							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+					<h3>Class</h3>
+			</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/lecture/index" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Video Lectures							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/quiz/index" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Quizzes							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/human_grading/index" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Mini-projects							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+					<h3>Tools</h3>
+			</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="http://www.codeskulptor.org/" target="_blank" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				CodeSkulptor				<span class="icon-share"></span>			</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+					<h3>Practice and Help</h3>
+			</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/forum/index" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Discussion Forums							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/wiki/view?page=overview" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Concepts and Examples							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/wiki/view?page=practice_overview" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Practice Exercises							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/wiki/view?page=pystepOverview" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Pystep							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+					<h3>Administrivia</h3>
+			</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/wiki/view?page=honorcode" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Honor Code (Please read!)							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/wiki/view?page=faq" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				FAQ							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/wiki/view?page=syllabus" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Syllabus							</a>
+						</li>
+	
+		
+	<li class="course-navbar-item">
+								<a href="https://class.coursera.org/interactivepython-003/wiki/view?page=coursestaff" data-if-linkable="modal-lock,gray,lock-icon" class="coursera-university-color">
+				
+				Course Staff							</a>
+						</li>
+	
+	
+		
+	
+    </ul>
+
+<ul style="list-style-type:none;margin-left: 10px;">
+  <li><a href="http://help.coursera.org/" class="coursera-university-color" target="_blank" title="Open help articles in new window"><i class="icon-question-sign"></i> Help Articles</a></li>
+</ul>
+
+<ul style="list-style-type:none;margin-left: 10px;">
+	
+</ul>
+
+</div>
+            </div>
+            <div id="course-page-content" role="main">
+                                
+
+<h2 class="course-page-header">
+  <span>
+Feedback — Quiz 1  </span>
+  
+  <a class="coursera-reporter-link" title="Click here if you're experiencing technical problems or found errors in the course materials." target="_blank" href="https://class.coursera.org/interactivepython-003/help/quizzes?url=https%3A%2F%2Fclass.coursera.org%2Finteractivepython-003%2Fquiz%2Ffeedback%3Fsubmission_id%3D452840">
+     Help
+  </a>
+</h2>
+
+
+<a data-coursera-admin-helpwidget-link="" rel="help" href="https://class.coursera.org/mooc/help/quiz" title="Quiz documentation" style="display:none;">Learn more</a>
+
+
+
+
+
+
+
+<p class="course-quiz-feedback"> You submitted this quiz on <strong>Fri 18 Oct 2013  8:53 PM BST (UTC +0100)</strong>. You got a score of <strong>90.00</strong> out of <strong>100.00</strong>. You can <a href="https://class.coursera.org/interactivepython-003/quiz/start?quiz_id=8">attempt again</a>, if you'd like.</p>
+
+
+            <form method="post" id="quiz_form">
+    
+    
+    
+    <div class="course-quiz-question-body">
+<h3 class="course-quiz-question-number">Question 1</h3>
+<div dir="auto" class="course-quiz-question-text">
+<p>
+An <code>if</code> statement can have how many <code>elif</code> parts?
+</p>
+</div>
+<div dir="auto" class="course-quiz-options randomize"></div>
+<table class="table">
+<tbody><tr>
+<th>Your Answer</th>
+<th></th>
+<th>Score</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[750e64b0c84d9151b5ca0aa81ca088e8][]" id="gensym_526191cbb3e8b" value="6b384cbad5cb1516c7c38fbf4cdeb199" disabled="disabled" type="radio">1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[750e64b0c84d9151b5ca0aa81ca088e8][]" id="gensym_526191cbb4827" value="8d854e5c18dcccc9cda4e5f5986cf075" checked="checked" disabled="disabled" type="radio">Unlimited, i.e., 0 or more</td>
+<td><span class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></span></td>
+<td>10.00</td>
+<td>Correct.</td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[750e64b0c84d9151b5ca0aa81ca088e8][]" id="gensym_526191cbb575c" value="87ed8e2a301eae242637a4d139091e9e" disabled="disabled" type="radio">0</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>10.00 / 10.00</td>
+<td></td>
+</tr>
+</tbody></table>
+</div><div class="course-quiz-question-body">
+<h3 class="course-quiz-question-number">Question 2</h3>
+<div style="float:none;width:100%"> <div dir="auto" class="course-quiz-question-text">
+<p>
+Consider the Boolean expression <code>not (p or not q)</code>.  Give the four following values in order, separated only by spaces:
+</p>
+<ul>
+<li>
+    the value of the expression when <code>p</code> is <code>True</code>, and <code>q</code> is <code>True</code>,
+  </li>
+  <li>
+    the value of the expression when <code>p</code> is <code>True</code>, and <code>q</code> is <code>False</code>,
+  </li>
+  <li>
+    the value of the expression when <code>p</code> is <code>False</code>, and <code>q</code> is <code>True</code>,
+  </li>
+  <li>
+    the value of the expression when <code>p</code> is <code>False</code>, and <code>q</code> is <code>False</code>,
+  </li>
+</ul>
+<p>
+Remember, each of the four results you provide should be <code>True</code> or <code>False</code> with the proper capitalization.
+</p>
+</div>
+</div>
+<label for="gensym_526191cbb77a4" class="hidden">Answer for Question 2</label><div class="course-quiz-options"></div>
+<div style="padding:5px">
+<strong>You entered:</strong>
+</div>
+<textarea dir="auto" id="gensym_526191cbb77a4" class="course-quiz-input" name="answer[43fcd8b99b3f7cdfc857d469b9c1dac7][answer]" readonly="readonly">False False True False </textarea><table class="table">
+<tbody><tr>
+<th>Your Answer</th>
+<th></th>
+<th>Score</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td dir="auto" class="course-quiz-student-answer">False</td>
+<td class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></td>
+<td>2.50</td>
+<td></td>
+</tr>
+<tr>
+<td dir="auto" class="course-quiz-student-answer">False</td>
+<td class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></td>
+<td>2.50</td>
+<td></td>
+</tr>
+<tr>
+<td dir="auto" class="course-quiz-student-answer">True</td>
+<td class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></td>
+<td>2.50</td>
+<td></td>
+</tr>
+<tr>
+<td dir="auto" class="course-quiz-student-answer">False</td>
+<td class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></td>
+<td>2.50</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>10.00 / 10.00</td>
+<td></td>
+</tr>
+</tbody></table>
+</div><div class="course-quiz-question-body">
+<h3 class="course-quiz-question-number">Question 3</h3>
+<div dir="auto" class="course-quiz-question-text">
+<p>
+Given a variable <code>n</code>, which of the following expressions computes the ten's digit of <code>n</code>?   For example, if <code>n</code> is 123, then we want the expression to evaluate to either 2 or 2.0. If <code>n</code> is 123.4, we want the expression to evaluate to either 2.0 or 2.
+</p>
+
+<p>
+Think about each expression mathematically, but also try each in <a href="http://www.codeskulptor.org/" target="_blank">CodeSkulptor</a>.  You may assume that <code>n</code> is non-negative.
+</p>
+</div>
+<div dir="auto" class="course-quiz-options"></div>
+<table class="table">
+<tbody><tr>
+<th>Your Answer</th>
+<th></th>
+<th>Score</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[5e48523ea92c70ad573f374ec3fbb065][]" id="gensym_526191cbbf373" value="26755603a57d01c1e320816e3a51bfe6" checked="checked" disabled="disabled" type="checkbox"><code>(n % 100 - n % 10) / 10</code>
+</td>
+<td><span class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></span></td>
+<td>4.00</td>
+<td>Correct.</td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[5e48523ea92c70ad573f374ec3fbb065][]" id="gensym_526191cbc02fd" value="b42f2cb0d51cf42250d0dd6aec0b6d70" checked="checked" disabled="disabled" type="checkbox"><code>((n - n % 10) % 100) / 10</code>
+</td>
+<td><span class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></span></td>
+<td>4.00</td>
+<td>Correct.  This is a relatively complicated expression to accomplish the goal.</td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[5e48523ea92c70ad573f374ec3fbb065][]" id="gensym_526191cbc12fc" value="cdae630fdb76f18fecdb034b731f3a5f" disabled="disabled" type="checkbox"><code>(n / 10) % 10</code>
+</td>
+<td><span class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></span></td>
+<td>2.00</td>
+<td>Close, but not quite.  For example, given <code>n = 123.4</code>, this will result in <code>2.34</code>.  Remember, try the expression in CodeSkulptor.
+</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>10.00 / 10.00</td>
+<td></td>
+</tr>
+</tbody></table>
+</div><div class="course-quiz-question-body">
+<h3 class="course-quiz-question-number">Question 4</h3>
+<div style="float:none;width:100%"> <div dir="auto" class="course-quiz-question-text">
+<p>
+The function calls <code>random.randint(0, 10)</code> and <code>random.randrange(0, 10)</code> generate random numbers in different ranges. What number can be generated by one of these functions, but not the other?
+(Refer to the <a href="http://www.codeskulptor.org/docs.html" target="_blank">CodeSkulptor documentation</a>.)
+</p>
+<p>
+By the way, we (and most Python programmers) always prefer to use <code>random.randrange()</code> since it handles numerical ranges in a way that is more consistent with the rest of Python.
+</p>
+</div>
+</div>
+<label for="gensym_526191cbc3e68" class="hidden">Answer for Question 4</label><div class="course-quiz-options"></div>
+<div style="padding:5px">
+<strong>You entered:</strong>
+</div>
+<textarea dir="auto" id="gensym_526191cbc3e68" class="course-quiz-input" name="answer[919d14722bc28fc201956309b764c58d][answer]" readonly="readonly">10</textarea><table class="table">
+<tbody><tr>
+<th>Your Answer</th>
+<th></th>
+<th>Score</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td dir="auto" class="course-quiz-student-answer">10</td>
+<td class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></td>
+<td>10.00</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>10.00 / 10.00</td>
+<td></td>
+</tr>
+</tbody></table>
+</div><div class="course-quiz-question-body">
+<h3 class="course-quiz-question-number">Question 5</h3>
+<div style="float:none;width:100%"> <div dir="auto" class="course-quiz-question-text">
+<p>
+Implement the mathematical function <var>f</var>(<var>x</var>) = -5 <var>x</var><sup>5</sup> + 69 <var>x</var><sup>2</sup> - 47 as a Python function.  Then use Python to compute the function values <var>f</var>(0), <var>f</var>(1), <var>f</var>(2), and <var>f</var>(3).  Enter the maximum of these four numbers.
+</p>
+</div>
+</div>
+<label for="gensym_526191cbc8462" class="hidden">Answer for Question 5</label><div class="course-quiz-options"></div>
+<div style="padding:5px">
+<strong>You entered:</strong>
+</div>
+<textarea dir="auto" id="gensym_526191cbc8462" class="course-quiz-input" name="answer[54610d96f0847b52a5371a361deecbf9][answer]" readonly="readonly">2</textarea><table class="table">
+<tbody><tr>
+<th>Your Answer</th>
+<th></th>
+<th>Score</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td dir="auto" class="course-quiz-student-answer">2</td>
+<td class="course-quiz-answer-incorrect" title="Incorrect" alt="Incorrect"><span class="icon-remove" alt="Incorrect"><span class="accessible-text-for-reader">Incorrect</span></span></td>
+<td>0.00</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>0.00 / 10.00</td>
+<td></td>
+</tr>
+</tbody></table>
+</div><div class="course-quiz-question-body">
+<h3 class="course-quiz-question-number">Question 6</h3>
+<div style="float:none;width:100%"> <div dir="auto" class="course-quiz-question-text">
+<p>
+When investing money, an important concept to know is <dfn>compound interest</dfn>.  
+The equation  <var>FV</var> = <var>PV</var> (1+<var>rate</var>)<sup><var>periods</var></sup> relates the following four quantities.
+</p>
+<ul>
+<li>
+    The <dfn>present value</dfn> (<var>PV</var>) of your money is how much money you have now. 
+  </li>
+  <li>
+    The <dfn>future value</dfn> (<var>FV</var>) of your money is how much money you will have in the future.
+  </li>
+  <li>
+    The <dfn>nominal interest rate per period</dfn> (<var>rate</var>) is how much interest you earn during a particular length of time, <strong>before</strong> accounting for compounding.  This is typically expressed as a percentage.
+  </li>
+  <li>
+    The <dfn>number of periods</dfn> (<var>periods</var>) is how many periods in the future this calculation is for.
+  </li>
+</ul>
+<p>
+Finish the following code, run it, and submit the printed number.  
+Provide at least four digits of precision after the decimal point.
+</p>
+
+<pre>def future_value(present_value, annual_rate, periods_per_year, years):
+    rate_per_period = annual_rate / periods_per_year
+    periods = periods_per_year * years
+    
+    # Put your code here.
+
+print "$1000 at 2% compounded daily for 3 years yields $", future_value(1000, .02, 365, 3)
+</pre>
+
+<p>
+Before submitting your answer, test your function on the following example.
+<code>future_value(500, .04, 10, 10)</code> should return <kbd>745.317442824</kbd>.
+</p>
+</div>
+</div>
+<label for="gensym_526191cbcc87c" class="hidden">Answer for Question 6</label><div class="course-quiz-options"></div>
+<div style="padding:5px">
+<strong>You entered:</strong>
+</div>
+<textarea dir="auto" id="gensym_526191cbcc87c" class="course-quiz-input" name="answer[a1be961942afe01583873af266721453][answer]" readonly="readonly"> 1061.8348</textarea><table class="table">
+<tbody><tr>
+<th>Your Answer</th>
+<th></th>
+<th>Score</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td dir="auto" class="course-quiz-student-answer">1061.8348</td>
+<td class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></td>
+<td>10.00</td>
+<td>
+<p>
+Correct.
+</p>
+</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>10.00 / 10.00</td>
+<td></td>
+</tr>
+</tbody></table>
+</div><div class="course-quiz-question-body">
+<h3 class="course-quiz-question-number">Question 7</h3>
+<div style="float:none;width:100%"> <div dir="auto" class="course-quiz-question-text">
+<p>
+There are several ways to calculate the area of a regular polygon.  Given the number of sides, <var>n</var>, and the length of each side, <var>s</var>, the polygon's area is
+</p>
+<div align="center">
+<p>
+¼ <var>n</var> <var>s</var><sup>2</sup> / tan(π/<var>n</var>).
+</p>
+</div>
+<p>
+For example, a regular polygon with 5 sides, each of length 7 inches, has area 84.3033926289 square inches.
+</p>
+
+<p>
+Write a function that calculates the area of a regular polygon, given 
+the number of sides and length of each side.  Submit the area of a 
+regular polygon with 7 sides each of length 3 inches.  Enter a number 
+(and not the units) with at least four digits of precision after the 
+decimal point.
+</p>
+
+<p>
+Note that the use of inches as the unit of measurement in these examples
+ is arbitrary.  Python only keeps track of the numerical values, not the
+ units.
+</p>
+</div>
+</div>
+<label for="gensym_526191cbd19c4" class="hidden">Answer for Question 7</label><div class="course-quiz-options"></div>
+<div style="padding:5px">
+<strong>You entered:</strong>
+</div>
+<textarea dir="auto" id="gensym_526191cbd19c4" class="course-quiz-input" name="answer[f403b05433751e658d8ec3a216bfc309][answer]" readonly="readonly">32.7052</textarea><table class="table">
+<tbody><tr>
+<th>Your Answer</th>
+<th></th>
+<th>Score</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td dir="auto" class="course-quiz-student-answer">32.7052</td>
+<td class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></td>
+<td>10.00</td>
+<td>Correct.</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>10.00 / 10.00</td>
+<td></td>
+</tr>
+</tbody></table>
+</div><div class="course-quiz-question-body">
+<h3 class="course-quiz-question-number">Question 8</h3>
+<div dir="auto" class="course-quiz-question-text">
+<p>
+Running the following program results in the error
+<kbd>SyntaxError: bad input on line 8 ('return')</kbd>.
+Which of the following describes the problem?
+</p>
+
+<pre>def max_of_2(a, b):
+    if a &gt; b:
+        return a
+    else:
+        return b
+
+def max_of_3(a, b, c):
+return max_of_2(a, max_of_2(b, c))
+</pre>
+</div>
+<div dir="auto" class="course-quiz-options randomize"></div>
+<table class="table">
+<tbody><tr>
+<th>Your Answer</th>
+<th></th>
+<th>Score</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[704dddca67c8279186cad6e1f7626785][]" id="gensym_526191cbd7bb3" value="5f97b81c049ecf8833ad744c76f9e0c2" disabled="disabled" type="radio">Extra parenthesis</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[704dddca67c8279186cad6e1f7626785][]" id="gensym_526191cbd849c" value="67bd2be29a60f83ef84a2cca93a678b6" disabled="disabled" type="radio">Misspelled variable name</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[704dddca67c8279186cad6e1f7626785][]" id="gensym_526191cbd8f6e" value="da5b755376557ae2762cf2d0b8271c69" disabled="disabled" type="radio">Missing parenthesis</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[704dddca67c8279186cad6e1f7626785][]" id="gensym_526191cbd9be5" value="ae443196b63446870de498ef35ffbd09" disabled="disabled" type="radio">Misspelled function name</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[704dddca67c8279186cad6e1f7626785][]" id="gensym_526191cbda811" value="29b2d27fff41111ea837ebabd4b3c1e5" disabled="disabled" type="radio">Missing colon</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[704dddca67c8279186cad6e1f7626785][]" id="gensym_526191cbdb166" value="85d731842f4b24a75ed5925564a83275" disabled="disabled" type="radio">Wrong number of arguments in function call</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[704dddca67c8279186cad6e1f7626785][]" id="gensym_526191cbdbaeb" value="7fdf4e32c88f369d442a74a018eaab99" checked="checked" disabled="disabled" type="radio">Incorrect indentation</td>
+<td><span class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></span></td>
+<td>10.00</td>
+<td>Correct.  The body of the function definition for <code>max_of_3()</code> should be indented, but it is not.</td>
+</tr>
+<tr>
+<td class="course-quiz-student-answer" dir="auto">
+<input dir="auto" class="course-quiz-input" name="answer[704dddca67c8279186cad6e1f7626785][]" id="gensym_526191cbdc7e6" value="ab4bebcf2632a169d9b096d4ab0173bf" disabled="disabled" type="radio">Misspelled keyword</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>10.00 / 10.00</td>
+<td></td>
+</tr>
+</tbody></table>
+</div><div class="course-quiz-question-body">
+<h3 class="course-quiz-question-number">Question 9</h3>
+<div style="float:none;width:100%"> <div dir="auto" class="course-quiz-question-text">
+<p>
+The following code has a number of syntactic errors in it.
+The intended math calculations are correct, so the only errors are syntactic.
+Fix the syntactic errors.
+</p>
+
+<p>
+Once the code has been fully corrected, it should print
+out two numbers.  The first should be 1.09888451159.  Submit the <strong>second</strong> number printed in <a href="http://www.codeskulptor.org/" target="_blank">CodeSkulptor</a>.  Provide at least four digits of precision after the decimal point.
+</p>
+
+<pre>define project_to_distance(point_x point_y distance):
+    dist_to_origin = math.square_root(pointx ** 2 + pointy ** 2)    
+     scale == distance / dist_to_origin
+    print point_x * scale, point_y * scale
+    
+project-to-distance(2, 7, 4)
+</pre>
+</div>
+</div>
+<label for="gensym_526191cbdf640" class="hidden">Answer for Question 9</label><div class="course-quiz-options"></div>
+<div style="padding:5px">
+<strong>You entered:</strong>
+</div>
+<textarea dir="auto" id="gensym_526191cbdf640" class="course-quiz-input" name="answer[0a2c4e3350e276d1e1c7e38d9c571a3b][answer]" readonly="readonly">3.8460957056</textarea><table class="table">
+<tbody><tr>
+<th>Your Answer</th>
+<th></th>
+<th>Score</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td dir="auto" class="course-quiz-student-answer">3.8460957056</td>
+<td class="course-quiz-answer-correct" title="Correct" alt="Correct"><span class="icon-ok" alt="Correct"><span class="accessible-text-for-reader">Correct</span></span></td>
+<td>20.00</td>
+<td>
+<p>
+Correct.
+</p>
+</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>20.00 / 20.00</td>
+<td></td>
+</tr>
+</tbody></table>
+</div>
+    
+        
+
+
+    </form>
+
+
+            </div>
+        </div>
+    </div>
+        
+    
+    <script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/spark.js"></script>
+
+<script>window.onerror = function(message, url, lineNum) {
+
+  // First check the URL and line number of the error
+  url = url || window.location.href;
+  // 99% of the time, errors without line numbers arent due to our code,
+  // they are due to third party plugins and browser extensions
+  if (lineNum === undefined || lineNum == null) return;
+  
+  // Now figure out the actual error message
+  // If it's an event, as triggered in several browsers
+  if (message.target && message.type) {
+    message = message.type;
+  }
+  if (!message.indexOf) {
+    message = 'Non-string, non-event error: ' + (typeof message);
+  }
+  
+  var errorDescrip = {
+    message: message,
+    script: url,
+    line: lineNum,
+    url: document.URL
+  }
+  
+  var err = {
+    key: 'page.error.javascript', 
+    value: errorDescrip
+  }
+  
+  window._204 = window._204 || [];
+  window._204.push(err);
+  
+  window._gaq = window._gaq || [];
+  window._gaq.push(err);
+}</script>
+<script type="text/javascript">
+    // SET UP THE MULTITRACKER
+        window.logger = window.Log({level:"error"});
+        var parts = location.host.split(".");
+    while(parts.length > 2) { parts.shift(); }
+
+    window.multitracker = window.MultiTracker({logger:window.logger});
+    window.multitracker.register('204', window._204 = window._204 || []);
+    window.multitracker.register('ga', window._gaq = window._gaq || [], 'google');
+
+    // SET UP GA and 204
+    window._gaq.push(['_setAccount', 'UA-28377374-1']);
+    window._gaq.push(['_setDomainName', 'coursera.org']);
+    window._gaq.push(['_setAllowLinker', true]);  
+    window._gaq.push(['_trackPageview']);
+    
+    // configure 204 with the following settings
+    window._204.push(["client", "spark"]);
+    window._204.push(["user", 1550273]);
+    window._204.push(["domain", "." + parts.join(".")]);
+
+    // set off the first event
+    window._204.push({key:"pageview", val:{}});
+
+    // override our multitracker queues with the ga queue when it is ready
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    
+      ga.onload = ga.onreadystatechange = function() {
+          ga.onreadystatechange = ga.onload = null;
+          window.multitracker.get('ga').queue = window._gaq;
+      };
+    })();
+
+    // override our multitracker queues with the 204 queue when it is ready
+    (function() {
+      var a = document.createElement('script'); a.type = 'text/javascript'; a.async = true;
+      a.src = 'https://eventing.coursera.org/204.min.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(a, s);
+      a.onload = a.onreadystatechange = function() {
+          a.onreadystatechange = a.onload = null;
+          window.multitracker.get('204').queue = window._204;
+      };
+    })();
+</script>
+
+<script>
+  // Set up shared AB testing object
+  (function() {
+    window.ab = {};
+
+    // we want to share the 204 session cookie with the AB session cookie...
+    var sessionId = AB.makeSession("__204u", {expires:356, domain:"." + location.host});
+        var debug = false;
+    
+    window.ab.user = window.AB(1550273, "user", {debug:debug, tracker:window.multitracker, logger:window.logger});
+    window.ab.session = window.AB(sessionId, "session", {debug:debug, tracker:window.multitracker, logger:window.logger});
+
+    if(window.CourseraABExperiments.user) {
+        window.ab.user.addExperiments(window.CourseraABExperiments.user);
+        window.ab.user.runExperimentsOn("body");
+    }
+
+    if(window.CourseraABExperiments.session) {
+        window.ab.session.addExperiments(window.CourseraABExperiments.session);
+        window.ab.session.runExperimentsOn("body");
+    }
+  })();
+</script>
+
+
+    <script>
+      // Set up help widget
+      (function() {
+        $("[data-helpwidget]").each(function() {
+            window.HelpWidget(this, {tracker: window.multitracker});
+        });
+       })();
+
+        $("[data-readme]").each(function() {
+            window.ReadMe(this);
+        });
+    </script>
+
+    <script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/modal_focus.js" type="text/javascript"></script>
+    <script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/get_query_parameters_002.js" type="text/javascript"></script>
+    <script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/signature_track.js" type="text/javascript"></script>
+    <script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/item_list.js" type="text/javascript"></script>
+    <script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/navbar.js" type="text/javascript"></script>
+
+    
+    <script>
+     // Set up help widget
+      (function() {
+        $("[data-helpwidget]").each(function() {
+            window.HelpWidget(this, {tracker: window.multitracker});
+        });
+       })();
+    </script>
+
+    
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  
+  styleSheets: [],
+  styles: {},
+
+  jax: ["input/TeX"],
+  
+  extensions: ["tex2jax.js"],
+
+  preJax: null,
+  postJax: null,
+
+  preRemoveClass: "MathJax_Preview",
+
+  showProcessingMessages: true,
+
+  messageStyle: "none",
+  
+  displayAlign: "center",
+  displayIndent: "0em",
+  
+  delayStartupUntil: "none",
+
+  skipStartupTypeset: false,
+  
+  elements: [],
+  
+  tex2jax: {
+	    inlineMath: [
+	                 ['$$','$$'],      // uncomment this for standard TeX math delimiters
+	                 ['\\(','\\)']
+	                 ],
+
+	                 displayMath: [
+	                 ['\\[','\\]']
+	                 ],
+
+    skipTags: ["script","noscript","style","textarea","pre","code"],
+    ignoreClass: "tex2jax_ignore",
+    processClass: "tex2jax_process",
+    processEscapes: false,
+    processEnvironments: true,
+    preview: "TeX"
+    
+  },
+  
+  mml2jax: {
+    preview: "alttext"
+    
+  },
+  
+  jsMath2jax: {
+    preview: "TeX"
+    
+  },
+
+  TeX: {
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    Macros: {},
+
+    extensions: ["AMSmath.js", "AMSsymbols.js"]
+    
+  },
+
+  //============================================================================
+  //
+  //  These parameters control the MathML inupt jax.
+  //
+  MathML: {
+    //
+    //  This specifies whether to use TeX spacing or MathML spacing when the
+    //  HTML-CSS output jax is used.
+    //
+    useMathMLspacing: false
+  },
+  
+  //============================================================================
+  //
+  //  These parameters control the HTML-CSS output jax.
+  //
+  "HTML-CSS": {
+    
+    scale: 100,
+    
+    availableFonts: ["STIX","TeX"],
+    
+    preferredFont: "TeX",
+    
+    webFont: "TeX",
+    
+    imageFont: "TeX",
+    
+    undefinedFamily: "STIXGeneral,'Arial Unicode MS',serif",
+      
+    showMathMenu: true,
+
+    styles: {},
+    
+    tooltip: {
+      delayPost: 600,          // milliseconds delay before tooltip is posted after mouseover
+      delayClear: 600,         // milliseconds delay before tooltip is cleared after mouseout
+      offsetX: 10, offsetY: 5  // pixels to offset tooltip from mouse position
+    }
+  },
+  
+  //============================================================================
+  //
+  //  These parameters control the NativeMML output jax.
+  //
+  NativeMML: {
+
+    scale: 100,
+
+    showMathMenu: true,
+    showMathMenuMSIE: true,
+
+    styles: {}
+  },
+  
+  MathMenu: {
+    delay: 400,
+    
+    helpURL: "http://www.mathjax.org/help/user/",
+
+    showRenderer: true,
+    showFontMenu: false,
+    showContext:  false,
+
+    windowSettings: {
+      status: "no", toolbar: "no", locationbar: "no", menubar: "no",
+      directories: "no", personalbar: "no", resizable: "yes", scrollbars: "yes",
+      width: 100, height: 50
+    },
+    
+    styles: {}
+    
+  },
+
+  MMLorHTML: {
+    prefer: {
+      MSIE:    "MML",
+      Firefox: "MML",
+      Opera:   "HTML",
+      other:   "HTML"
+    }
+  }
+});
+</script>
+<script type="text/javascript">
+(function () {
+
+  function loadMathJax() {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://duqnjvq4jwr55.cloudfront.net/2.1/MathJax.js";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
+
+  window.loadOrRefreshMathJax = function(domId) {
+    if (window.MathJax) {
+      if (domId) {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, domId]);
+      } else {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+      }
+    } else {
+      loadMathJax();
+    }
+  }
+})();
+</script>
+    <script type="text/javascript">
+        var site_base_url = "https:\/\/www.coursera.org\/";
+        var site_static_asset_url = "https:\/\/dt5zaw6a98blc.cloudfront.net\/site-static\/";
+        var spark_class_short_name = "interactivepython";
+        var spark_class_id = 971041;
+        var spark_class_url = "\/interactivepython-003";
+        var spark_signature_url = "https:\/\/class.coursera.org\/interactivepython-003\/signature\/";
+
+        var course_strings_name = "An Introduction to Interactive Programming in Python";
+        var student_full_name = "Roger Ward";
+    </script>
+
+    
+<script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/quiz_timer.js"></script>
+<script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/get_query_parameters.js"></script>
+<script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/quiz_attempt.js"></script>
+<script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/latex_preview.js"></script>
+<script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/db_class.js"></script>
+<script>initRunQuery(".test_query", "run_query");</script>
+<script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/modals.js"></script>
+<script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/cookie.js"></script>
+<script src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/general_sigtrack_modal.js"></script>
+
+<script>
+    $(function() {
+        var m = new window.SignatureModal($('.coursera-signature-doing-well-modal'));
+        m.setDoingWell('https://www.coursera.org/signature/course/interactivepython/971041?utm_source=spark&utm_medium=doingwell');
+        m.open();
+   });
+</script>
+
+<div class="coursera-signature-doing-well-modal modal" style="display: none;">
+    <div class="coursera-signature-modal-header modal-header">
+        <button class="close" aria-hidden="true" data-modal-close="">×</button>
+        <img class="coursera-signature-modal-ribbon" src="Quiz%20Feedback%20_%20An%20Introduction%20to%20Interactive%20Programming%20in%20Python2_files/ribbon_stripes.png">
+        <p class="coursera-signature-modal-signature-track">Signature Track</p>
+        <p class="coursera-signature-modal-title">You're invited to Signature Track</p>
+    </div>
+    <div class="coursera-signature-modal-body modal-body" style="margin-left: 25px; margin-right: 25px">
+    <p>Hi Roger Ward,</p>
+    <p>Great job! We've noticed that you've done excellent on your quizzes in An Introduction to Interactive Programming in Python.</p>
+    <p>That's why we want to invite you to join your course's Signature Track.</p>
+    <p><strong> Why Signature Track? It's simple.</strong></p>
+    <ul>
+        <li>Earn an official Verified Certificate</li>
+        <li>Share your course record with employers and universities</li>
+        <li>Prove it's your work, your identity</li>
+    </ul>
+    <p>Plus, there's no extra work to do for the Signature Track.</p>
+    <p>Hurry, registration for Signature Track ends soon.</p>
+        <div style="text-align: center">
+            <button class="btn coursera-signature-next-button course-signaturetrack-modal-learnmore" style="width: 270px; height: 40px">
+                Join your course's Signature Track
+            </button>
+            <div class="course-signaturetrack-modal-nothanks">
+                <a data-modal-close="" href="javascript:void(0)">No thanks</a>
+            </div>
+        </div>
+        <p style="font-size: 12px">Note: Signature Track is optional. You can still complete the regular course.</p>
+    </div>
+</div>
+
+<script type="text/javascript">$(function() { loadOrRefreshMathJax();})</script>
+
+
+
+
+</body></html>

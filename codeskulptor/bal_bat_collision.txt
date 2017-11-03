@@ -1,0 +1,137 @@
+Hi Guys,
+
+There is a plethora of post concerning collision detection. I and many others have been writing snippets of code over and over agian. 
+
+So I thought that I could give a small tutorial concerning this.
+
+Now I hope that this does not violate the honor code. I have left out some crucial code. But without this understanding many would not get their code working. After all is this not a learning institution.
+
+Lets teach and lets learn
+If it does, please let me know immediately and I will delete it.
+
+I know that this is not the only way to do collision detection, there are many ways. I also know that it does not cater for a lot of other scenarios. That you will have to figure out either on your own or at a later stage by asking relevant questions in the forum
+
+You are really over complicating the issue.
+Notwithstanding calculating the speed of the ball and the balls next position and the angular contact of the edge of the ball, etc, etc, we are only worried, for this project, about some simple collision detection
+
+First, we have a gutter, instead of the edge of the canvas. Don't get flustered with this. All it does is move the edge of the canvas, so to speak, in a few pixels. Well not the canvas but the x position of the collision detection.
+
+So first thing to do is to detect the horizontal collision of the ball with the gutter. That means that if the ball hits the gutter at anywhere on the screen then we have to do something. So we know that the gutter is 8 pixels wide. And we know the edge of our screen,. For left, it is 0, and for right it is 600.
+So our collision boundaries as it were are 0+8, and 600-8.
+
+Now all we have to do is to detect if the ball has reached or passed these boundaries on a horizontal plane.
+But the difficulty might lie with the fact that python draws circles from a center point given a radius. Well this is how we generally draw circles in the real world. We  are using a circle for our ball. The circle has a radius, knowing this radius means we can find the edge of the circle.
+So the circle has a midpoint position. The edge of the circle is the circle position (midpoint), minus the radius for the left edge, and circle position (midpoint) plus the radius for the right edge.
+
+Knowing this we can detect when the ball has reached either edge.
+
+So we can do this detection in a conditional statement.
+The ball position can (in this case) be held in a list, where the 0 index is the x position and the 1 index is the y position
+Our template has already given us some global variables.
+
+WIDTH = 600
+HEIGHT = 400
+BALL_RADIUS = 20
+PAD_WIDTH = 8
+
+
+So we can use this in our conditional to detect the edge collision. Which in this case is merely checking the x value of the ball.
+
+## > greater than width refers to the right edge. So here we are checking collision with the right 
+if ball_pos[0] >= WIDTH-PAD_WIDTH-BALL_RADIUS: 
+   #do something here when the ball hits the gutter edge
+## Check the left edge.  if the ball is less than or equal to
+elif ball_pos[0] <= BALL_RADIUS+PAD_WIDTH:
+   #do something here when the ball hits the gutter edge
+
+So what is this conditional doing
+The first one or right edge check, Takes the ball position and checks against the right edge or the width of the canvas. But we subtract the pad width (gutter) and subtract the ball radius to give us the edge of the circle.
+So to evaluate it out. if the ball position is 572 has it collided with the edge
+
+if ball_pos[0] >= WIDTH-PAD_WIDTH-BALL_RADIUS:
+
+substitute
+
+if 572>= 600-8-20:
+
+if 572>= 572
+
+Yes the ball has not collided with the right edge. Ball position is 28
+For the left edge it is exactly the sale
+
+elif ball_pos[0] <= BALL_RADIUS+PAD_WIDTH:
+
+Substitute
+
+elif 28 <= 20+8:
+
+elif 28 <= 28:
+
+Yes the ball has collided with the left edge.
+
+But now we have to detect if there is a paddle in the way to deflect the ball. The paddles x position is fixed. It only has movement on the y position.
+So logically we need to check if the paddles y position is the same as the balls y position. Then the paddle and ball are on the same plane. Seeing that the ball is already at the same x or horizontal position as the paddle at this moment, we need to check only the y position. (Remember for this project and at this moment, we are not detecting future position of the ball as it passed past the paddle, that is a lot more complicated)
+
+For this excersise we will be using a line as a paddle. The paddle has a height of 80
+
+PAD_HEIGHT = 80
+
+But the paddle has two y positions. y1, being the top position and y2 being the bottom position. This means that the ball should be able to deflect of anywhere on the paddle between these two values.
+The paddle values can be held in a multi dimension list, or a list of lists. To remind us of of the syntax of a line
+
+canvas.draw_line([x1, y1], [x2,y2], 20, 'Blue')
+
+We can represent the points of the paddle like so
+
+lp_paddle_pos = [[x1,y1],[x2,y2]]
+
+So if the paddle position is at:
+
+lp_paddle_pos = [[4, 275], [4, 355]]
+
+and the ball position is at 
+
+ball_pos  = [28, 301]
+
+Has the ball it the paddle
+Inside our first conditional we then can check this. (Checking against left paddle. Assuming velocity is < 0)
+
+## > greater than width refers to the right edge. So here we are checking collision with the right 
+if ball_pos[0] >= WIDTH-PAD_WIDTH-BALL_RADIUS: 
+   #do something here when the ball hits the gutter edge
+## Check the left edge.  if the ball is less than or equal to
+elif ball_pos[0] <= BALL_RADIUS+PAD_WIDTH:
+   #Check if the ball is hitting the paddle
+        if ball_pos[1] not in range(lp_position[0][1],lp_position[1][1]+1):
+            #So something when the ball does not hit the paddle
+        else:
+            ball_vel[0] =abs(ball_vel[0])
+
+The code at the moment we are interested in is:
+
+#Check if the ball is hitting the paddle
+        if ball_pos[1] not in range(lp_position[0][1],lp_position[1][1]+1):
+            #So something when the ball does not hit the paddle
+        else:
+            ball_
+vel[0] =abs(ball_vel[0])
+
+So here we are checking if the balls y position is in the same y plane as the paddle. At this moment we do not have to worry about the radius, we have already checked that before. But the paddle is 80 pixels high, do we have to check each position? The answer is no. All we have to do is check if the ball position (measured from the center of the ball as this is the further most point that the ball can hit the paddle at) is within the paddle range. IF it is, then we deflect it by changing the velocity vector, if not, then it is a score and we spawn the ball.
+
+What is the code doing here. Here we are checking if the balls position is within the paddle range. Our start value is the top y1 value of the paddle, and our stop value is the bottom y2 value of the paddle plus 1.
+
+if ball_pos[1] not in range(lp_position[0][1],lp_position[1][1]+1):
+
+Lets substitute
+
+if 301 not in range(275,355+1):
+
+So is the balls position within that range. We have to say yes. So we deflect the ball.
+How do we deflect the ball. Well by changing the balls velocity vector. At this moment the ball is traveling from right to left, meaning that the balls vector is negative.
+The abs function gives me a positive vector now the ball is moving from left to right. Yes we have successfully deflected the ball.
+IF the balls position is not within that range, we score and re-spawn.
+
+
+Other things to consider might be the velocity of the ball when hitting the paddle, this might cause the ball to be well withing the paddle when it hits or it might be in and beyond the paddle given the y velocity. What would you do when that happens?
+5
+· flag

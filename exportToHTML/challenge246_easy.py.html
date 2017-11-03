@@ -1,0 +1,214 @@
+<html>
+<head>
+<title>challenge246_easy.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #888888; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(98,151,85); font-style: italic; }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(204,120,50); font-weight: bold; }
+.s3 { color: rgb(104,151,187); }
+.s4 { color: rgb(0,128,128); }
+.s5 { color: rgb(204,120,50); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+challenge246_easy.py</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<a name="l1"><span class="ln">1    </span></a><span class="s0">&quot;&quot;&quot; We are going to calculate how long we can light our X-mass lights with 1 battery. 
+<a name="l2"><span class="ln">2    </span></a>First off all some quick rules in the electronics. 
+<a name="l3"><span class="ln">3    </span></a> 
+<a name="l4"><span class="ln">4    </span></a>All things connected in parallel share the same voltage, but they have their own current. 
+<a name="l5"><span class="ln">5    </span></a>All things connected in serial share the same current, but they have their own voltage. 
+<a name="l6"><span class="ln">6    </span></a> 
+<a name="l7"><span class="ln">7    </span></a>Parallel: 
+<a name="l8"><span class="ln">8    </span></a> 
+<a name="l9"><span class="ln">9    </span></a>----O---- 
+<a name="l10"><span class="ln">10   </span></a> |     | 
+<a name="l11"><span class="ln">11   </span></a> ---O--- 
+<a name="l12"><span class="ln">12   </span></a> 
+<a name="l13"><span class="ln">13   </span></a>Serial: 
+<a name="l14"><span class="ln">14   </span></a> 
+<a name="l15"><span class="ln">15   </span></a>---O---O--- 
+<a name="l16"><span class="ln">16   </span></a> 
+<a name="l17"><span class="ln">17   </span></a>We are going to use 9V batteries for our calculation. They supply a voltage of 9V (Volt) 
+<a name="l18"><span class="ln">18   </span></a>(big surprise there) and have a capacity from around 1200mAh (milliAmpere hour). 
+<a name="l19"><span class="ln">19   </span></a> 
+<a name="l20"><span class="ln">20   </span></a>The lifetime of the battery can be calculate by dividing the capacity by the total 
+<a name="l21"><span class="ln">21   </span></a>Amperes we draw. E.g. If we have a 9V battery and we use a light that uses 600 mA, 
+<a name="l22"><span class="ln">22   </span></a>we can light the light for 2 hours (1200/600) 
+<a name="l23"><span class="ln">23   </span></a> 
+<a name="l24"><span class="ln">24   </span></a>For our lights we'll use average leds, which need an voltage of 1.7V and a current 
+<a name="l25"><span class="ln">25   </span></a>of 20mA to operate. Since we have a 9V we can have a max of 5 leds connected in serial. 
+<a name="l26"><span class="ln">26   </span></a>But by placing circuits in parallel, we can have more than 5 leds in total, but then 
+<a name="l27"><span class="ln">27   </span></a>we'll drain the battery faster. 
+<a name="l28"><span class="ln">28   </span></a> 
+<a name="l29"><span class="ln">29   </span></a>I'll split the challenges up in a few parts from here on. 
+<a name="l30"><span class="ln">30   </span></a> 
+<a name="l31"><span class="ln">31   </span></a>Part 1 
+<a name="l32"><span class="ln">32   </span></a> 
+<a name="l33"><span class="ln">33   </span></a>As input you'll be given the length in hours that the lights needs te be lit. 
+<a name="l34"><span class="ln">34   </span></a>You have give me the max number of led's we can have for that time 
+<a name="l35"><span class="ln">35   </span></a> 
+<a name="l36"><span class="ln">36   </span></a>Input 
+<a name="l37"><span class="ln">37   </span></a> 
+<a name="l38"><span class="ln">38   </span></a>1 
+<a name="l39"><span class="ln">39   </span></a> 
+<a name="l40"><span class="ln">40   </span></a>Output 
+<a name="l41"><span class="ln">41   </span></a> 
+<a name="l42"><span class="ln">42   </span></a>300 
+<a name="l43"><span class="ln">43   </span></a> 
+<a name="l44"><span class="ln">44   </span></a>Explanation: 
+<a name="l45"><span class="ln">45   </span></a> 
+<a name="l46"><span class="ln">46   </span></a>We can have 5 leds in serial, but then they'll take only a current of 20mA. 
+<a name="l47"><span class="ln">47   </span></a>The battery can give us 1200mA for 1 hour. So if we divide 1200 by 20 we get 
+<a name="l48"><span class="ln">48   </span></a>that we could have 60 times 5 leds. 
+<a name="l49"><span class="ln">49   </span></a> 
+<a name="l50"><span class="ln">50   </span></a>Inputs 
+<a name="l51"><span class="ln">51   </span></a> 
+<a name="l52"><span class="ln">52   </span></a>1 
+<a name="l53"><span class="ln">53   </span></a>4 
+<a name="l54"><span class="ln">54   </span></a>8 
+<a name="l55"><span class="ln">55   </span></a>12 
+<a name="l56"><span class="ln">56   </span></a> 
+<a name="l57"><span class="ln">57   </span></a>Outputs 
+<a name="l58"><span class="ln">58   </span></a> 
+<a name="l59"><span class="ln">59   </span></a>300 
+<a name="l60"><span class="ln">60   </span></a>75 
+<a name="l61"><span class="ln">61   </span></a>35 (37 is also possible, but then we can't have 5 leds in serial for each parallel circuit) 
+<a name="l62"><span class="ln">62   </span></a>25 
+<a name="l63"><span class="ln">63   </span></a> 
+<a name="l64"><span class="ln">64   </span></a>Part 2 
+<a name="l65"><span class="ln">65   </span></a> 
+<a name="l66"><span class="ln">66   </span></a>Draw out the circuit. A led is drawn in this way -|&gt;|- 
+<a name="l67"><span class="ln">67   </span></a> 
+<a name="l68"><span class="ln">68   </span></a>input 
+<a name="l69"><span class="ln">69   </span></a> 
+<a name="l70"><span class="ln">70   </span></a>20 
+<a name="l71"><span class="ln">71   </span></a> 
+<a name="l72"><span class="ln">72   </span></a>Output 
+<a name="l73"><span class="ln">73   </span></a> 
+<a name="l74"><span class="ln">74   </span></a>*--|&gt;|---|&gt;|---|&gt;|---|&gt;|---|&gt;|--* 
+<a name="l75"><span class="ln">75   </span></a> |                             | 
+<a name="l76"><span class="ln">76   </span></a> --|&gt;|---|&gt;|---|&gt;|---|&gt;|---|&gt;|-- 
+<a name="l77"><span class="ln">77   </span></a> |                             | 
+<a name="l78"><span class="ln">78   </span></a> --|&gt;|---|&gt;|---|&gt;|---|&gt;|---|&gt;|-- 
+<a name="l79"><span class="ln">79   </span></a> 
+<a name="l80"><span class="ln">80   </span></a>inputs 
+<a name="l81"><span class="ln">81   </span></a> 
+<a name="l82"><span class="ln">82   </span></a>12 
+<a name="l83"><span class="ln">83   </span></a>6 
+<a name="l84"><span class="ln">84   </span></a>100 
+<a name="l85"><span class="ln">85   </span></a> 
+<a name="l86"><span class="ln">86   </span></a>Part 3 
+<a name="l87"><span class="ln">87   </span></a> 
+<a name="l88"><span class="ln">88   </span></a>Our circuit is not complete without a resistor to regulate the current and catch the 
+<a name="l89"><span class="ln">89   </span></a>voltage difference. We need to calculate what the resistance should be from the resistor. 
+<a name="l90"><span class="ln">90   </span></a>This can be done by using Ohm's law. 
+<a name="l91"><span class="ln">91   </span></a> 
+<a name="l92"><span class="ln">92   </span></a>We know we can have 5 leds of 1.7V in series, so that is 0.5V over the resistor. 
+<a name="l93"><span class="ln">93   </span></a>If we know the current we need we can calculate the resistance. 
+<a name="l94"><span class="ln">94   </span></a> 
+<a name="l95"><span class="ln">95   </span></a>E.g. If we need 1 hour we can have a current of 1200 mA and we have 0.5V so the 
+<a name="l96"><span class="ln">96   </span></a>resistance is the voltage divided by the current. =&gt; 0.5(V)/1.2(A) = 0.417 ohms 
+<a name="l97"><span class="ln">97   </span></a> 
+<a name="l98"><span class="ln">98   </span></a>inputs 
+<a name="l99"><span class="ln">99   </span></a> 
+<a name="l100"><span class="ln">100  </span></a>1 
+<a name="l101"><span class="ln">101  </span></a>4 
+<a name="l102"><span class="ln">102  </span></a>8 
+<a name="l103"><span class="ln">103  </span></a> 
+<a name="l104"><span class="ln">104  </span></a>Outputs 
+<a name="l105"><span class="ln">105  </span></a> 
+<a name="l106"><span class="ln">106  </span></a>0.417 
+<a name="l107"><span class="ln">107  </span></a>1.667 
+<a name="l108"><span class="ln">108  </span></a>3.333 
+<a name="l109"><span class="ln">109  </span></a> 
+<a name="l110"><span class="ln">110  </span></a>Part 4 
+<a name="l111"><span class="ln">111  </span></a> 
+<a name="l112"><span class="ln">112  </span></a>Putting it all Together 
+<a name="l113"><span class="ln">113  </span></a> 
+<a name="l114"><span class="ln">114  </span></a>You'll be given 5 numbers, the voltage drop over a Led, the current it needs, the 
+<a name="l115"><span class="ln">115  </span></a>voltage of the battery and the capacity and the time the leds need to be lit. 
+<a name="l116"><span class="ln">116  </span></a> 
+<a name="l117"><span class="ln">117  </span></a>The units are in voltage V, current mA (divide by 1000 for A), voltage V, capacity (mAh), timespan h 
+<a name="l118"><span class="ln">118  </span></a> 
+<a name="l119"><span class="ln">119  </span></a>input 
+<a name="l120"><span class="ln">120  </span></a> 
+<a name="l121"><span class="ln">121  </span></a>1.7 20 9 1200 20 
+<a name="l122"><span class="ln">122  </span></a> 
+<a name="l123"><span class="ln">123  </span></a>Output 
+<a name="l124"><span class="ln">124  </span></a> 
+<a name="l125"><span class="ln">125  </span></a>Resistor: 8.333 Ohms 
+<a name="l126"><span class="ln">126  </span></a>Scheme: 
+<a name="l127"><span class="ln">127  </span></a>*--|&gt;|---|&gt;|---|&gt;|---|&gt;|---|&gt;|--* 
+<a name="l128"><span class="ln">128  </span></a> |                             | 
+<a name="l129"><span class="ln">129  </span></a> --|&gt;|---|&gt;|---|&gt;|---|&gt;|---|&gt;|-- 
+<a name="l130"><span class="ln">130  </span></a> |                             | 
+<a name="l131"><span class="ln">131  </span></a> --|&gt;|---|&gt;|---|&gt;|---|&gt;|---|&gt;|-- 
+<a name="l132"><span class="ln">132  </span></a>&quot;&quot;&quot;</span><span class="s1"> 
+<a name="l133"><span class="ln">133  </span></a> 
+<a name="l134"><span class="ln">134  </span></a> 
+<a name="l135"><span class="ln">135  </span></a></span><span class="s2">class </span><span class="s1">XmasLights: 
+<a name="l136"><span class="ln">136  </span></a> 
+<a name="l137"><span class="ln">137  </span></a>    VOLTS = </span><span class="s3">9</span><span class="s1"> 
+<a name="l138"><span class="ln">138  </span></a>    MILLIAMPS = </span><span class="s3">1200</span><span class="s1"> 
+<a name="l139"><span class="ln">139  </span></a>    LED_VOLTAGE = </span><span class="s3">1.7</span><span class="s1"> 
+<a name="l140"><span class="ln">140  </span></a>    LED_DRAW = </span><span class="s3">20</span><span class="s1"> 
+<a name="l141"><span class="ln">141  </span></a>    led_per_line = </span><span class="s2">None</span><span class="s1"> 
+<a name="l142"><span class="ln">142  </span></a>    total_lines = </span><span class="s2">None</span><span class="s1"> 
+<a name="l143"><span class="ln">143  </span></a>    LED = </span><span class="s4">'-|&gt;|-'</span><span class="s1"> 
+<a name="l144"><span class="ln">144  </span></a>    LINK = </span><span class="s4">'-'</span><span class="s1"> 
+<a name="l145"><span class="ln">145  </span></a>    PARALLEL_LINK = </span><span class="s4">'|'</span><span class="s1"> 
+<a name="l146"><span class="ln">146  </span></a> 
+<a name="l147"><span class="ln">147  </span></a>    </span><span class="s2">def </span><span class="s1">__init__(self</span><span class="s5">, </span><span class="s1">hours): 
+<a name="l148"><span class="ln">148  </span></a>        self.hours = hours 
+<a name="l149"><span class="ln">149  </span></a> 
+<a name="l150"><span class="ln">150  </span></a>    </span><span class="s2">def </span><span class="s1">set_hours(self</span><span class="s5">, </span><span class="s1">hours): 
+<a name="l151"><span class="ln">151  </span></a>        self.hours = hours 
+<a name="l152"><span class="ln">152  </span></a> 
+<a name="l153"><span class="ln">153  </span></a>    </span><span class="s2">def </span><span class="s1">length_in_hours(self): 
+<a name="l154"><span class="ln">154  </span></a>        number_of_leds = (int(self.VOLTS / self.LED_VOLTAGE) * int(self.MILLIAMPS / self.LED_DRAW)) / self.hours 
+<a name="l155"><span class="ln">155  </span></a>        </span><span class="s2">return </span><span class="s1">number_of_leds 
+<a name="l156"><span class="ln">156  </span></a> 
+<a name="l157"><span class="ln">157  </span></a>    </span><span class="s2">def </span><span class="s1">resistor(self): 
+<a name="l158"><span class="ln">158  </span></a>        volts_over_resistor = self.VOLTS - (self.LED_VOLTAGE * self.led_per_line) 
+<a name="l159"><span class="ln">159  </span></a>        amps = (self.LED_DRAW / </span><span class="s3">1000 </span><span class="s1">* self.total_lines) 
+<a name="l160"><span class="ln">160  </span></a>        ohm = round((volts_over_resistor / amps)</span><span class="s5">, </span><span class="s3">3</span><span class="s1">) 
+<a name="l161"><span class="ln">161  </span></a>        </span><span class="s2">return </span><span class="s1">ohm 
+<a name="l162"><span class="ln">162  </span></a> 
+<a name="l163"><span class="ln">163  </span></a>    </span><span class="s2">def </span><span class="s1">draw_circuit(self): 
+<a name="l164"><span class="ln">164  </span></a>        self.led_per_line = int(self.VOLTS / self.LED_VOLTAGE) 
+<a name="l165"><span class="ln">165  </span></a>        self.total_lines = self.MILLIAMPS / (self.LED_DRAW * self.hours) 
+<a name="l166"><span class="ln">166  </span></a>        self.total_lines = int(self.total_lines) 
+<a name="l167"><span class="ln">167  </span></a>        led = </span><span class="s4">'-|&gt;|-'</span><span class="s1"> 
+<a name="l168"><span class="ln">168  </span></a>        link = </span><span class="s4">'-'</span><span class="s1"> 
+<a name="l169"><span class="ln">169  </span></a>        para = </span><span class="s4">'|'</span><span class="s1"> 
+<a name="l170"><span class="ln">170  </span></a>        star = </span><span class="s4">'*'</span><span class="s1"> 
+<a name="l171"><span class="ln">171  </span></a>        line = star + link + (led + link) * self.led_per_line + star 
+<a name="l172"><span class="ln">172  </span></a>        print(line) 
+<a name="l173"><span class="ln">173  </span></a>        line_next = </span><span class="s4">' ' </span><span class="s1">+ link + (led + link) * self.led_per_line 
+<a name="l174"><span class="ln">174  </span></a>        </span><span class="s2">for </span><span class="s1">x </span><span class="s2">in </span><span class="s1">range(</span><span class="s3">0</span><span class="s5">, </span><span class="s1">self.total_lines - </span><span class="s3">1</span><span class="s1">): 
+<a name="l175"><span class="ln">175  </span></a>            spacer = </span><span class="s4">' ' </span><span class="s1">+ para.ljust(len(line_next) - </span><span class="s3">2</span><span class="s5">, </span><span class="s4">' '</span><span class="s1">) + para 
+<a name="l176"><span class="ln">176  </span></a>            print(spacer) 
+<a name="l177"><span class="ln">177  </span></a>            print(line_next) 
+<a name="l178"><span class="ln">178  </span></a> 
+<a name="l179"><span class="ln">179  </span></a> 
+<a name="l180"><span class="ln">180  </span></a> 
+<a name="l181"><span class="ln">181  </span></a></span><span class="s2">if </span><span class="s1">__name__ == </span><span class="s4">&quot;__main__&quot;</span><span class="s1">: 
+<a name="l182"><span class="ln">182  </span></a>    ans = XmasLights(</span><span class="s3">20</span><span class="s1">) 
+<a name="l183"><span class="ln">183  </span></a>    ans2 = ans.length_in_hours() 
+<a name="l184"><span class="ln">184  </span></a>    print(ans2) 
+<a name="l185"><span class="ln">185  </span></a> 
+<a name="l186"><span class="ln">186  </span></a>    ans3 = ans.draw_circuit() 
+<a name="l187"><span class="ln">187  </span></a>    print(ans3) 
+<a name="l188"><span class="ln">188  </span></a> 
+<a name="l189"><span class="ln">189  </span></a>    ans4 = ans.resistor() 
+<a name="l190"><span class="ln">190  </span></a>    print(ans4) 
+<a name="l191"><span class="ln">191  </span></a></span></pre>
+</body>
+</html>

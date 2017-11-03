@@ -1,0 +1,32 @@
+
+  remainder        player(p)   computer(c)    winner
+------------:--        --------        ----------           ------
+(0 - 0) % 5 : 0     rock           rock                 tie
+(0 - 1) % 5 : 4     rock           Spock              c
+(0 - 2) % 5 : 3     rock           paper               c
+(0 - 3) % 5 : 2     rock           lizard                p
+(0 - 4) % 5 : 1     rock           scissors           p
+
+(1 - 0) % 5 : 1     Spock        rock                 p
+(1 - 1) % 5 : 0     Spock        Spock              tie
+(1 - 2) % 5 : 4     Spock        paper              c
+(1 - 3) % 5 : 3     Spock        lizard               c
+(1 - 4) % 5 : 2     Spock        scissors           p
+                             
+(2 - 0) % 5 : 2     paper        rock                 p
+(2 - 1) % 5 : 1     paper        Spock              p
+(2 - 2) % 5 : 0     paper        paper               tie
+(2 - 3) % 5 : 4     paper        lizard                c
+(2 - 4) % 5 : 3     paper        scissors           c
+                             
+(3 - 0) % 5 : 3     lizard        rock                  c
+(3 - 1) % 5 : 2     lizard        Spock               p
+(3 - 2) % 5 : 1     lizard        paper                p
+(3 - 3) % 5 : 0     lizard        lizard                 tie
+(3 - 4) % 5 : 4     lizard        scissors            c
+                             
+(4 - 0) % 5 : 4     scissors    rock                 c
+(4 - 1) % 5 : 3     scissors    Spock              c
+(4 - 2) % 5 : 2     scissors    paper               p
+(4 - 3) % 5 : 1     scissors    lizard                p
+(4 - 4) % 5 : 0     scissors    scissors            tie
