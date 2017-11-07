@@ -38,3 +38,28 @@ Sample Output 2
 8482550
 
 '''
+import unittest
+# N digits
+# divisible by M
+
+
+def largest_integer(a, b):
+    max_num = int('1' + '0' * b)
+    modded = max_num % b
+    return max_num - modded
+
+'''
+if __name__ == '__main__':
+    N = 7
+    M = 4241275
+    ans = largest_integer(N, M)
+    print(ans'''
+
+
+if __name__ == '__main__':
+
+    class TestSubString(unittest.TestCase):
+        def test(self):
+            self.assertEqual(largest_integer(3, 2), 998)
+
+
