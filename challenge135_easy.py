@@ -49,6 +49,78 @@ the console to the user, while any other lines are from the user to the console.
 > 2 * 0 * 4 * 2
 0
 > Correct!
-q
 
+# Multiplier first to simplify the maths (order of operations)
 '''
+import random
+
+def maths(a, b):
+    operators = ['-', '+',]
+    mult = ['*']
+    equation = ''
+    accum = 0
+    num_list = []
+    while accum < 4:
+        num = random.randint(a, b)
+        num_list.append(num)
+        accum += 1
+
+    reserve = random.choice([0, 1])
+    num = random.randint(0, 4)
+
+    flag = True
+    for x in range(0, len(num_list)-1):
+        equation += str(num_list[x])
+        try:
+            equation += mult[x]
+        except IndexError:
+            flag = False
+
+        if flag == False:
+            try:
+                equation += operators[x]
+            except IndexError:
+                equation += str(operators[reserve])
+    equation += str(num_list[-1])
+
+    # clean space to use eval
+    newspace = {'__builtins__': None}
+    ans = eval(equation, newspace)
+    return (equation, ans)
+
+
+if __name__ == '__main__':
+    low = 0
+    high = 10
+    equation_plus_answer = maths(low, high)
+    expression = equation_plus_answer[0]
+    ans = equation_plus_answer[1]
+    print('Type answer or "q" to quit: ')
+    guess = None
+    while guess != 'q':
+        equation_plus_answer = maths(low, high)
+        expression = equation_plus_answer[0]
+        ans = equation_plus_answer[1]
+        print('Answer please...')
+        guess = input('> ' + expression)
+        if guess == 'q':
+            exit()
+        elif int(guess) == ans:
+            print('Correct!')
+        elif guess == 'q':
+            exit()
+        else:
+            while True:
+                if guess == 'q':
+                    exit()
+                elif int(guess) != ans:
+                    print(ans)
+                    print('Incorrect... ' + '\n' + 'Try Again ')
+                    guess = input('> ' + expression)
+                    #guess = ans
+                else:
+                    break
+
+
+        if guess == 'q':
+            exit()
