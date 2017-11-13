@@ -100,44 +100,42 @@ def Capitalized_snake_case(l):
             output += temp + '_'
     return output
 
+if __name__ == '__main__':
+    candidates = '''0
+    hello world
+    
+    1
+    user id
+    
+    2
+    map controller delegate manager
+    '''
+
+    num_list = []
+    word_list = []
+    candidates = candidates.splitlines()
+
+    for line in candidates:
+        num = re.findall('[0-9]', line)
+        words = re.findall('([a-zA-Z]+)', line)
+        if len(num) > 0:
+            try:
+                num_list.append(num[0])
+            except IndexError:
+                pass
+        if len(words) > 0:
+            try:
+                word_list.append(words)
+            except IndexError:
+                pass
+
+    for x in range (0, len (num_list)):
+        if num_list[x] == '0':
+            ans1 = Camel_Case(word_list[x])
+        elif num_list[x] == '1':
+            ans2 = snake_case(word_list[x])
+        else:
+            ans3 = Capitalized_snake_case(word_list[x])
 
 
-
-candidates = '''0
-hello world
-
-1
-user id
-
-2
-map controller delegate manager
-'''
-
-num_list = []
-word_list = []
-candidates = candidates.splitlines()
-
-for line in candidates:
-    num = re.findall('[0-9]', line)
-    words = re.findall('([a-zA-Z]+)', line)
-    if len(num) > 0:
-        try:
-            num_list.append(num[0])
-        except IndexError:
-            pass
-    if len(words) > 0:
-        try:
-            word_list.append(words)
-        except IndexError:
-            pass
-
-for x in range (0, len (num_list)):
-    if num_list[x] == '0':
-        ans1 = Camel_Case(word_list[x])
-    elif num_list[x] == '1':
-        ans2 = snake_case(word_list[x])
-    else:
-        ans3 = Capitalized_snake_case(word_list[x])
-
-
-print('{0}{3}{1}{3}{2}'.format(ans1, ans2, ans3, '\n'))
+    print('{0}{3}{1}{3}{2}'.format(ans1, ans2, ans3, '\n'))
