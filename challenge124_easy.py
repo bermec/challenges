@@ -52,3 +52,17 @@ A 3 4
 
 
 '''
+
+edges ='''A 3 4
+B 4 5
+C 1 2
+D 2 3'''
+
+edges = edges.splitlines()
+edges.sort(key=lambda s: s.split()[1])
+output = ''
+for strng in edges:
+    output += strng[0] + ' '
+print(output)
+
+
