@@ -5,7 +5,7 @@ happen to use a us-EN layout keyboard you might want to get a picture of one.
 
 The en-us keyboard layout pictured here is one common layout for keys. There
 are character-generating keys such as '1' and 'q', as well as modifier keys
-like 'ctrl' and 'shift', and 'caps-lock'
+like 'ctrl' and 'shift', and 'caps-lock'/
 
 If one were to press every one of the character-generating keys in order from
 top to bottom left-to-right, you would get the following string:
@@ -39,4 +39,51 @@ My e-mail address (to send the $$$ to) is FAKE@GMAIL.COM
 
 
 '''
-^s
+
+
+def char_shift(c):
+    char_shift = ''
+    char_dict = {'`': '¬',
+                 '-': '_',
+                 '=': '+',
+                 '[': '{',
+                 ']': '}',
+                 ';': ':',
+                 "'": '@',
+                 '#': '~',
+                 '/': '?',
+                 '.': chr(ord('.') + 16),
+                 ',': chr(ord(',') + 16),
+                 '\\': '|',
+                 ' ': ''}
+
+    return char_dict[c]
+
+
+def shift(s):
+    shifted = ''
+    for char in s:
+        if char.isalpha():
+            shifted += str(chr(ord(char) - 32))
+        elif char.isnumeric():
+            shifted += str(chr(ord(char) - 16))
+        else:
+            continue
+    return shifted
+
+
+
+if __name__ == '__main__':
+    candidates = "`1234567890-=qwertyuiop[]\ asdfghjkl;'zxcvbnm,./"
+    new_char = ''
+    for char in candidates:
+        if char.isalnum():
+            ans = shift(char)
+            new_char += ans
+        else:
+            ans = char_shift(char)
+            new_char += ans
+    print(new_char)
+
+
+
