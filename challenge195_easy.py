@@ -51,3 +51,24 @@ Expand it into its true form, for example:
 /usr/local/include/SDL/stan
 
 '''
+import re
+
+paths = '''/bin/thing:/bin/thing-3
+/bin/thing-3:/bin/thing-3.2
+/bin/thing-3.2/include:/usr/include
+/usr/include/SDL:/usr/local/include/SDL
+/bin/thing/include/SDL/stan'''
+
+paths = paths.splitlines()
+
+holding_list = []
+for line in paths:
+    first_slice = re.findall('\:(\/usr/local.*)', line)
+    second_slice = re.findall('\/stan', line)
+    if len(first_slice) >0:
+        holding_list.append(first_slice[0])
+    if len(second_slice) > 0:
+        holding_list.append(second_slice[0])
+
+output = holding_list[0] + holding_list[1]
+print(output)
