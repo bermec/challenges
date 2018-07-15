@@ -1,28 +1,32 @@
-def CastOut(Base=10, Start=201, End=9000):
-    ran = [y for y in range(Base - 1) if y % (Base - 1) == (y * y) % (Base - 1)]
-    x, y = divmod(Start, Base - 1)
-    while True:
-        for n in ran:
-            k = (Base - 1) * x + n
-            if k < Start:
-                continue
-            if k > End:
-                return
-            yield k
-        x += 1
-
-
-for V in CastOut(Base=10, Start=2, End=90):
-    print(V, end=' ')
-
-Base = 10
-N = 6
-Paddy_cnt = 1
-for n in range(N):
-    for V in CastOut(Base, Start=Base ** n, End=Base ** (n + 1)):
-        for B in range(n + 1, n * 2 + 2):
-            x, y = divmod(V * V, Base ** B)
-            if V == x + y and 0 < y:
-                print('{1}: {0}'.format(V, Paddy_cnt))
-                Paddy_cnt += 1
-                break
+a = 'I have read some text why dont you, you2 will find it worthwhile I hope.'
+N = 29
+b = ''
+'''
+acc = 0
+for char in a:
+    b += char
+    kount = len(b)
+    if len(b) == N:
+        if char == ' ':
+            print(b)
+        else:
+            b = b[::-1]
+            while b[0] != ' ':
+                b = b[1:]
+            b = b[::-1]
+            print(b)
+            exit()
+'''
+a = a.split()
+#print(a)
+for word in a:
+    temp = len(b)
+    if len(word) + len(b) <= N:
+        b += word + ' '
+    else:
+        temp = len(b)
+        #print(b)
+        while len(b) < N:
+            b += ' '
+        print(b, end='')
+        b = ''

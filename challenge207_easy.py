@@ -49,6 +49,7 @@ A T G T T T C G A G G C T A A
 Met Phe Arg Gly STOP
 
 '''
+import re
 
 dna = 'A A T G C C T A T G G C'
 dna_split = dna.split()
@@ -66,4 +67,77 @@ for letter in dna_split:
     comp_strand += letter + ' '
 print(dna)
 print(comp_strand)
+print(comp_strand)
 
+
+protons = {"TTT": "Phe",
+    "TTC": "Phe",
+    "TTA": "Leu",
+    "TTG": "Leu",
+    "TCT": "Ser",
+    "TCC": "Ser",
+    "TCA": "Ser",
+    "TCG": "Ser",
+    "TAT": "Tyr",
+    "TAC": "Tyr",
+    "TAA": "STOP",
+    "TAG": "STOP",
+    "TGT": "Cys",
+    "TGC": "Cys",
+    "TGA": "STOP",
+    "TGG": "Trp",
+    "CTT": "Leu",
+    "CTC": "Leu",
+    "CTA": "Leu",
+    "CTG": "Leu",
+    "CCT": "Pro",
+    "CCC": "Pro",
+    "CCA": "Pro",
+    "CCG": "Pro",
+    "CAT": "His",
+    "CAC": "His",
+    "CAA": "Gln",
+    "CAG": "Gln",
+    "CGT": "Arg",
+    "CGC": "Arg",
+    "CGA": "Arg",
+    "CGG": "Arg",
+    "ATT": "Ile",
+    "ATC": "Ile",
+    "ATA": "Ile",
+    "ATG": "Met",
+    "ACT": "Thr",
+    "ACC": "Thr",
+    "ACA": "Thr",
+    "ACG": "Thr",
+    "AAT": "Asn",
+    "AAC": "Asn",
+    "AAA": "Lys",
+    "AAG": "Lys",
+    "AGT": "Ser",
+    "AGC": "Ser",
+    "AGA": "Arg",
+    "AGG": "Arg",
+    "GTT": "Val",
+    "GTC": "Val",
+    "GTA": "Val",
+    "GTG": "Val",
+    "GCT": "Ala",
+    "GCC": "Ala",
+    "GCA": "Ala",
+    "GCG": "Ala",
+    "GAT": "Asp",
+    "GAC": "Asp",
+    "GAA": "Glu",
+    "GAG": "Glu",
+    "GGT": "Gly",
+    "GGC": "Gly",
+    "GGA": "Gly",
+    "GGG": "Gly"
+}
+
+sequence = 'ATGTTTCGAGGCTAA'
+
+codes = re.findall('\w{3}', sequence)
+for code in codes:
+    print(protons[code])

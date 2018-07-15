@@ -1,4 +1,6 @@
 import re
+from datetime import date
+from datetime import date
 
 wood = 'wo wood at oh at cat catch'
 addr = 'You will find him at rog.pynguins.com or on facebook'
@@ -18,15 +20,22 @@ candidates = """2015-07-01 2015-07-04 YDM
 codes = re.findall('(YMD|DMY|YDM)', candidates)
 print('codes ', codes)
 
-
-newstring = re.sub(r"\b","",date.strftime(z,'%m/%d/%Y'))
-print('newstring: 2013-12-4 ', newstring)
-
-
 lst = ' 2012 5 8'
 year = re.findall('[^\s]\d+', lst)
 year2 = re.findall('\d+', lst)
 
 print(year)
 print(year2)
+
+a = ' */'
+
+# will find the pair first
+b = re .findall('\S{2}|\S{1}', a)
+print(b)
+
+a = ' */'
+
+# will find them as singles
+b = re .findall('\S{1}|\S{2}', a)
+print(b)
 

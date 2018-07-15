@@ -10,4 +10,4 @@ print('{0:<10}{1:<10}'.format(a[0], a[1]))
 
 strings = ['1 2\n3 4', '5 6\n7 8']
 #strings = ['string\none', 'string\ntwo', 'string\nthree']
-print(*[''.join(x) for x in zip(*[[x.ljust(len(max(s.split('\n'), key=len))) for x in s.split('\n')] for s in strings])], sep='\n')
+#print(*[''.join(x) for x in zip(*[[x.ljust(len(max(s.split('\n'), key=len))) for x in s.split('\n')] for s in strings])], sep='\n')

@@ -1,0 +1,4 @@
+hello,\nworld!
+\"\\\"
+an invalid\nstring\
+another invalid string \q

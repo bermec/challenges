@@ -1,48 +1,44 @@
-#strng = 'abcabcabcabccc'
-#strng = 'abbccc'
-strng = 'qwertyytrewq'
-totals_dict = {}
-accum = 1
-temp = 0
-count = 0
-
-for x in range(0, len(strng)):
-    if count == 0:
-        temp = x
+'''
+a = [' ', '', ' ', (4, 'x')]
+b = a[::-1]
+print(b)
+lenb= len(b)
+for x in b:
     try:
-        if strng[x] != strng[x + 1]:
-            totals_dict[temp] = accum
-            accum = 1
-            count = 0
-            continue
-    except IndexError:
-        totals_dict[temp] = accum
-        accum = 1
-        count = 0
+        print(x[0] * x[1])
+    except:
         continue
-    if count == 0:
-        temp = x
-    count += 1
-    accum += 1
 
-print(totals_dict)
+a = [' ', '', ' ', (4, 'x')]
+b = a[::-1]
 
-# pull out largest value, if more than one, furthest right.
-max_series = max(totals_dict.values())
-max_index = max(totals_dict, key=totals_dict.get)
-print(max_index, max_series)
-print(strng[max_index:max_index + max_series])
+lenb= len(b) - 1
+for x in range(lenb, -1, -1):
+    try:
+        print(b[x][0] * b[x][1])
+    except:
+        continue
+        '''
 
-key_list = []
-the_list = totals_dict.keys()
-print(the_list[0])
-key_list.append(the_list)
-print(key_list)
+a = ['  4 5', '12345']
+b = ''
+c = []
+for x in range(0, 5):
+    print(a[0][x], end='')
+    print('{: >2}'.format(a[1][x]))
 
 
-new_dict = {}
-for k,v in totals_dict.items():
-    if k == max_index:
-        pass
+m = ['12345', '67890']
+n = []
+for strng in m:
+    strng = strng[2:]
+    n.append(strng)
 
-print(new_dict)
+print(n)
+
+a = ['1']
+while len(a) < 3:
+    a.insert(0, ' ')
+
+
+

@@ -2,6 +2,7 @@
 A set of mathematical helper functions
 """
 import math
+
 # Check for an even number
 def iseven(num):
     if num % 2 == 0:
@@ -180,24 +181,6 @@ def int_gen ():
         i = i + 1
 
 
-
-def count_2_variable(c2v_config, prim, count):
-    result = False
-    which = False
-    for key, value in enumerate(c2v_config):
-        if prim == value:
-            which = key
-            result = count
-            break
-    return (which, result)
-
-# Returning a tuple from a function
-def doingit(v):
-  a = v+10
-  b= v*20
-  c = 56/v
-  return c,a,b; # returns a tuple
-
 class TriangleNum():
     """
         Thread-Safe Triangular number generator
@@ -217,7 +200,61 @@ class TriangleNum():
         except:
             pass
 
+def gcd(a, b):
+    ''' greatest common denominator of a, b'''
+    d = 0
+    while a % 2 == 0 and b % 2 == 0:
+        a /= 2
+        b /= 2
+        d += 1
+    while a != b:
+        if a % 2 == 0:
+            a /= 2
+        elif b% 2 == 0:
+            b /= 2
+        elif a > b:
+            a = (a - b) / 2
+        else:
+            b = (b - a) / 2
+    g = a
+    gcd = g * (2 ** d)
+    return gcd
 
 
+def simplify(a, b):
+    ''' simplify a fraction'''
+    ''' divide num, denom by gcd'''
+    gcf = gcd(a, b)
+    num = a / gcf
+    denom = b / gcf
+    return (num, denom)
+
+
+def bin2dec(n):
+    store = 0
+    x = 0
+    # y = index of n
+    for y in range(len(n) - 1, -1, -1):
+        m = n[y]
+        m = int(m)
+        store += m * (2 ** x)
+        x += 1
+    return  store
+
+
+def dec2bin(n):
+    numstring = ''
+    if n % 2 == 0:
+        numstring += str(0)
+    else:
+        numstring += str(1)
+    while n > 1:
+        n = n // 2
+
+        if n % 2 == 0:
+            numstring += str(0)
+        else:
+            numstring += str(1)
+    return numstring[::-1]
 
 
