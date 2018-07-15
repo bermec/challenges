@@ -153,19 +153,19 @@ def months_between_dates_same_year(a, b, y):
 
 
 
-dates = """2018 07 11
-2018 06 30
-2017 10 30
-2016 2 29
-2015 2 28
-29 4 12
-570 11 30
-1066 9 25
-1776 7 4
-1933 1 30
-1953 3 6
-2100 1 9
-2202 12 15
+dates = """2018 07 11      # wed
+2018 06 30                 # sat 
+2017 10 30                 # mon 
+2016 2 29                   # mon
+2015 2 28                   # sat
+29 4 12                     # tues
+570 11 30                   # sun
+1066 9 25                   # mon
+1776 7 4                    # thur
+1933 1 30                   # thur
+1953 3 6                    # fri
+2100 1 9                    # sat
+2202 12 15                  # wed
 7032 3 26"""
 
 dates = dates.splitlines()
@@ -244,50 +244,48 @@ for candidate_date in dates:
         day_accumulator += candidate_days_left_of_month
         days_used_this_month = day_now - 1
         day_accumulator += days_used_this_month
-
-    days_used_this_month = day_now - 1
-    #day_accumulator += days_used_this_month
-
-    # months elapsed plus convert into days
-    days_in_months_elapsed = 0
-    if years_elapsed <= 0:
+    elif years_elapsed <= 0:
         # months elapsed to days elapsed
+        # months elapsed plus convert into days
+        days_in_months_elapsed = 0
+        days_used_this_month = day_now - 1
+        # day_accumulator += days_used_this_month
 
         # process candidate months left
         for x in range(candidate_month +1, 13):
             months_left_in_cand_year = months[x]
             #day_accumulator -= months_left_in_cand_year
 
-        year_info = year_type(yr_now)
-        if year_info:
-            months[2] = 29
+            year_info = year_type(yr_now)
+            if year_info:
+                months[2] = 29
+            else:
+                months[2] = 28
+            # process year now months consumed
+            for x in range(1, month_now - 1):
+                days_in_months_elapsed += months[x]
+                #day_accumulator -= days_in_months_elapsed
+            #================================<< or
+
+            if months_elapsed <= 0 and candidate_month == month_now:
+                days_elapsed = same_month(candidate_day, day_now)
+                day_accumulator -= days_elapsed #===============================<<
         else:
-            months[2] = 28
-        # process year now months consumed
-        for x in range(1, month_now - 1):
-            days_in_months_elapsed += months[x]
-            #day_accumulator -= days_in_months_elapsed
-        #================================<< or
+            # months gone to date
+            for x in range(1, month_now):
+                days_in_month = months[x]
+                day_accumulator -= days_in_month #===============================<< this
 
-        if months_elapsed <= 0 and candidate_month == month_now:
-            days_elapsed = same_month(candidate_day, day_now)
-            day_accumulator -= days_elapsed #===============================<<
-    else:
-        # months gone to date
-        for x in range(1, month_now):
-            days_in_month = months[x]
-            day_accumulator -= days_in_month #===============================<< this
+            for x in range(candidate_month +1, 13):
+                months_left_in_cand_year = months[x]
+                day_accumulator -= months_left_in_cand_year
 
-        for x in range(candidate_month +1, 13):
-            months_left_in_cand_year = months[x]
-            day_accumulator -= months_left_in_cand_year
+            #=======================<<
 
-        #=======================<<
-
-    print(day_accumulator)
+        print(day_accumulator)
 
 
-    # -2 to convert to weekday
+        # -2 to convert to weekday
     # add 1 for calc
 
     candidate_day_of_week = (((this_day_number - day_accumulator) % 7) + 21) % 7
