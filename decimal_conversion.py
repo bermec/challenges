@@ -34,3 +34,5 @@ if __name__ == '__main__':
             palins += str(check) + ' '
 
     print('Palindromes of 10858: ', palins)
+
+    print(num_bases(5, 2))

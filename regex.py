@@ -14,3 +14,12 @@ stuff = 'From rog@repairman.com'
 
 ans = re.findall('From .*@([^ ]*)', stuff)
 print(ans)
+
+# format:
+
+n = '154.3210'
+d = '\d'
+num = 1
+d_s = d * num
+ans = re.findall('\d+\.' + d_s, n)
+print(ans)

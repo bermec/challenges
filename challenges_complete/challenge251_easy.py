@@ -106,8 +106,6 @@ def regex(l):
     temp = []
     for x in range(0, len(l)):
         ans = re.findall('\S{10|\S{9}|\S{8}|\S{7}|\S{6}|\S{5}|\S{4}|\S{3}|\S{2}|\S{1}', l[x])
-        #print('ans: ', ans)
-        #print('length of l: ', len(l))
         # iterate and count the individual results
         for item in ans:
             len_item = len(item)
